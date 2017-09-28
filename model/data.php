@@ -7,5 +7,6 @@ include 'sanitize.php';
 
 include 'user_connection.php';
 include 'adduser.php';
+include 'selectprojects.php';
 
 ?>
