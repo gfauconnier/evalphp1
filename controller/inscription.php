@@ -36,7 +36,7 @@ if (isset($_POST['user'], $_POST['userfname'], $_POST['userlname'], $_POST['emai
         }
     }
 }
-if ($errors) {
+if (count($errors)) {
     foreach ($errors as $error) {
       ?>
       <p><?php echo $error; ?></p>
