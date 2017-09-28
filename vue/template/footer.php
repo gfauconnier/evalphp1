@@ -5,6 +5,12 @@
   <script src="../js/materialize.js"></script>
   <script src="../js/main.js"></script>
 <!-- ############## JS sources ############## -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('select').material_select();
+});
+</script>
 </body>
 
 </html>
