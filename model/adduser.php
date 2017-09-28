@@ -38,7 +38,7 @@ function add_user($user_creation)
         $dbconnect->rollBack();
 
         $errors = $e->getMessage();
-        return $errors;
+        return "L'utilisateur n'a pas pu être créé.";
     }
-    return "Utilisateur créé";
+    return "L'utilisateur a été créé.";
 }

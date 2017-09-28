@@ -32,7 +32,7 @@ if (isset($_POST['user'], $_POST['userfname'], $_POST['userlname'], $_POST['emai
         if (verify_user($user_creation[0])) {
             $errors[] = verify_user($user_creation[0]);
         } else {
-            add_user($user_creation);
+          $errors =  add_user($user_creation);
         }
     }
 }
