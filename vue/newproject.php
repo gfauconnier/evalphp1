@@ -1,3 +1,4 @@
+<h2>Ajouter un projet</h2>
 <form action="admin.php" method="post">
   <label for="projectname">Nom du projet : </label>
   <input type="text" id="projectname" name="projectname" placeholder="Nom du projet" required><br>

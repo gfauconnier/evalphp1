@@ -2,7 +2,8 @@
 
 function get_own_projects() {
   $dbconnect = dbconnect();
-  $req = $dbconnect->query('SELECT * FROM projects WHERE id_user = '.$_SESSION['user_id']);
+  $req = $dbconnect->query('SELECT * FROM projects AS p INNER JOIN project_types AS pt
+                            ON p.id_project_type = pt.id_project_type WHERE id_user = '.$_SESSION['user_id']);
   $res = $req->fetchAll();
   return $res;
 }
