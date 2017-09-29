@@ -12,20 +12,42 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
           $formaction = sanitize_var($_POST['formaction']);
           switch($formaction) {
             case 1:
-            addstep();
-            break;
+            if(isset($_POST['newstep'], $_POST['newstepdate'])){
+
+              $addstep[] = $_POST['newstep'];
+              $addstep[] = $_POST['newstepdate'];
+
+              $addstep = sanitize_array($addstep);
+
+              if (check_date($addstep[1])){
+                addstep($addstep, $projectid);
+              }
+
+            }
+              break;
             case 2:
-            deletestep();
-            break;
+            if(count(select_step_task('project_steps', 'id_step', $newtask[0]))) {
+              delete_step_task('project_steps', 'id_step', $re);
+            }
+              break;
             case 3:
-            addtask();
-            break;
+            if (isset($_POST['stepid'], $_POST['newtask'])) {
+              $newtask[] = $_POST['stepid'];
+              $newtask[] = $_POST['newtask'];
+              $newtask = sanitize_array($newtask);
+
+              if(count(select_step_task('project_steps', 'id_step', $newtask[0]))) {
+                addtask($newtask);
+              }
+
+            }
+              break;
             case 4:
-            deletetask();
-            break;
+              delete_step_task('step_tasks', 'id_task', $re);
+              break;
             default:
-            echo "Erreur lors du traitement.";
-            break;
+              echo "Action inconnue.";
+              break;
           }
         }
 
@@ -45,6 +67,7 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
           <form action="" method="post">
             <label for="newtask">Nouvelle tache</label>
             <input type="text" id="newtask" name="newtask" placeholder="Taches">
+            <input type="hidden" name="stepid" value="<?php echo $project_step['id_step']; ?>">
             <input type="hidden" name="formaction" value="3">
             <input type="submit" value="Créér">
           </form>
