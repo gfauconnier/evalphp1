@@ -3,10 +3,9 @@
 function check_date($deadline)
 {
     if (preg_match('#^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$#', $deadline)) {
-        $deadline = substr($deadline, 6).'/'.substr($deadline, 3, 3).substr($deadline, 0, 2);
 
+        $deadline = strtodate($deadline);
 
-        $deadline = new DateTime($deadline);
         $now = getdate();
         $now = $now['year'] . '/' . $now['mon'] . '/' . $now['mday'];
         $now = new DateTime($now);
@@ -19,4 +18,31 @@ function check_date($deadline)
     } else {
         return false;
     }
+}
+
+function dateformat($datetochange)
+{
+    if (preg_match('#^[0-9]$#', substr($datetochange, 2, 1))) {
+        $explosion = substr($datetochange, 4, 1);
+    } else {
+        $explosion = substr($datetochange, 2, 1);
+    }
+
+    $newdate = explode($explosion, $datetochange);
+    $newdate = array_reverse($newdate);
+    $datetochange = implode("-", $newdate);
+
+    return $datetochange;
+}
+
+function strtodate($datetochange)
+{
+    $datetochange = dateformat($datetochange);
+    $datetochange = new DateTime($datetochange);
+    return $datetochange;
+}
+
+function datetostr($datetochange)
+{
+    return $datetochange->format('d/m/Y');
 }
