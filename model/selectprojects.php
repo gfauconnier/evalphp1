@@ -15,6 +15,15 @@ function get_project_types () {
   return $res;
 }
 
+function select_step_task($table, $id, $idvalue) {
+  $dbconnect = dbconnect();
+  $req = $dbconnect()->query('SELECT * FROM ' . $table . ' WHERE ' . $id . ' = ' . $idvalue);
+  $res = $req->fetchAll();
+
+  return $res;
+
+}
+
 
 
 ?>
