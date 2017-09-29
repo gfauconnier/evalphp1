@@ -9,7 +9,7 @@ if (isset($_POST['projectname'], $_POST['deadline'], $_POST['projecttype'])) {
     $new_project[] = $_POST['deadline'];
     $new_project[] = $_POST['projecttype'];
 
-    $new_project = sanitize($new_project);
+    $new_project = sanitize_array($new_project);
 
     if (check_date($new_project[1])) {
         $errors[] = add_project($new_project);

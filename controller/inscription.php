@@ -27,7 +27,7 @@ if (isset($_POST['user'], $_POST['userfname'], $_POST['userlname'], $_POST['emai
         $user_creation[] = $_POST['pwd'];
         $user_creation[] = $_POST['rpwd'];
 
-        $user_creation = sanitize($user_creation);
+        $user_creation = sanitize_array($user_creation);
 
         if (verify_user($user_creation[0])) {
             $errors[] = verify_user($user_creation[0]);
