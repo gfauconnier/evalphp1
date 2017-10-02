@@ -41,5 +41,18 @@ function addtask($addtask){
 }
 
 function delete_step_task($table, $id, $id_value) {
+  $dbconnect = dbconnect();
+  try {
+      $dbconnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+      $dbconnect->beginTransaction();
+
+      $req = $dbconnect->query('DELETE FROM '.$table.' WHERE '.$id.' = '.$id_value);
+
+      $dbconnect->commit();
+  } catch (Exception $e) {
+      $dbconnect->rollBack();
+
+      $errors = $e->getMessage();
+  }
 }

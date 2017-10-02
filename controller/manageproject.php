@@ -9,41 +9,51 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
         require_once 'headerc.php';
 
         if (isset($_POST['formaction'])) {
-          $formaction = sanitize_var($_POST['formaction']);
-          switch($formaction) {
+            $formaction = sanitize_var($_POST['formaction']);
+            switch ($formaction) {
             case 1:
-            if(isset($_POST['newstep'], $_POST['newstepdate'])){
+            if (isset($_POST['newstep'], $_POST['newstepdate'])) {
+                $addstep[] = $_POST['newstep'];
+                $addstep[] = $_POST['newstepdate'];
 
-              $addstep[] = $_POST['newstep'];
-              $addstep[] = $_POST['newstepdate'];
+                $addstep = sanitize_array($addstep);
 
-              $addstep = sanitize_array($addstep);
-
-              if (check_date($addstep[1])){
-                addstep($addstep, $projectid);
-              }
-
+                if (check_date($addstep[1])) {
+                    addstep($addstep, $projectid);
+                }
             }
               break;
+
             case 2:
-            if(count(select_step_task('project_steps', 'id_step', $newtask[0]))) {
-              delete_step_task('project_steps', 'id_step', $re);
+            if (isset($_POST['stepid'])) {
+                $stepid = sanitize_var($_POST['stepid']);
+
+                if (count(select_step_task('project_steps', 'id_step', $stepid))) {
+                    delete_step_task('project_steps', 'id_step', $stepid);
+                }
             }
               break;
+
             case 3:
             if (isset($_POST['stepid'], $_POST['newtask'])) {
-              $newtask[] = $_POST['stepid'];
-              $newtask[] = $_POST['newtask'];
-              $newtask = sanitize_array($newtask);
+                $newtask[] = $_POST['stepid'];
+                $newtask[] = $_POST['newtask'];
+                $newtask = sanitize_array($newtask);
 
-              if(count(select_step_task('project_steps', 'id_step', $newtask[0]))) {
-                addtask($newtask);
-              }
-
+                if (count(select_step_task('project_steps', 'id_step', $newtask[0]))) {
+                    addtask($newtask);
+                }
             }
               break;
+
             case 4:
-              delete_step_task('step_tasks', 'id_task', $re);
+            if (isset($_POST['taskid'])) {
+                $taskid = sanitize_var($_POST['taskid']);
+
+                if (count(select_step_task('step_tasks', 'id_task', $taskid))) {
+                    delete_step_task('step_tasks', 'id_task', $taskid);
+                }
+            }
               break;
             default:
               echo "Action inconnue.";
