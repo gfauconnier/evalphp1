@@ -13,3 +13,9 @@ function ownedproject($projectid) {
       return false;
     }
 }
+
+function is_checked($checked) {
+  if ($checked == 1) {
+    return 'checked="checked"';
+  }
+}
