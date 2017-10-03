@@ -40,7 +40,7 @@
                 </p>
                 <ul class="container col s12">
                   <?php foreach ($step_tasks as $step_task) { ?>
-                  <li class="row <?php echo is_checked($step_task['id_task']); ?>">
+                  <li class="row <?php echo is_checked_display($step_task['id_task']); ?>">
                     <?php echo $step_task['task_desc']; ?>
                   </li>
                   <?php } ?>

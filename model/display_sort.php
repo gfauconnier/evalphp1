@@ -16,7 +16,7 @@ function display_sort_text($param = 0) {
   return $text;
 }
 
-function is_checked($id_task) {
+function is_checked_display($id_task) {
   $dbconnect = dbconnect();
 
   $req = $dbconnect->query('SELECT * FROM step_tasks WHERE id_task = '.$id_task);
