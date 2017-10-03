@@ -11,9 +11,10 @@ function get_own_projects($project = NULL) {
   return $res;
 }
 
-function get_project_types () {
+function get_project_types ($id = NULL) {
   $dbconnect = dbconnect();
-  $req = $dbconnect->query('SELECT * FROM project_types');
+  $id_val = $id ? ' WHERE id_project_type = '.$id : NULL;
+  $req = $dbconnect->query('SELECT * FROM project_types'.$id_val);
   $res = $req->fetchAll();
   return $res;
 }
@@ -28,6 +29,26 @@ function select_step_task($table, $id, $idvalue) {
 
 }
 
+function display_projects($val = 0) {
+
+  $dbconnect = dbconnect();
+
+  switch($val) {
+    case 0:
+      $var = 'WHERE project_state !=3';
+      break;
+    case 999:
+      $var = 'WHERE project_state = 3';
+      break;
+    default:
+      $var = 'WHERE project_state !=3 AND id_project_type = '.$val;
+      break;
+  }
+
+  $req = $dbconnect->query('SELECT * FROM projects '.$var.' ORDER BY deadline ASC');
+  $res = $req->fetchAll();
+  return $res;
+}
 
 
 ?>

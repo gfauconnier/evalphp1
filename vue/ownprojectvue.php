@@ -1,4 +1,4 @@
-<!-- <div class="row"> -->
+
   <div class="col s12 m6 l4">
     <div class="card">
 
@@ -14,9 +14,7 @@
             <p class="col s8">
               <input type="checkbox" name="step<?php echo $project_step['id_step']; ?>" id="step<?php echo $project_step['id_step']; ?>" <?php echo is_checked($project_step[ 'step_state']);?>><label for="step<?php echo $project_step['id_step']; ?>"><?php echo $project_step['step_name']; ?></label>
             </p>
-            <!-- <p class="col s3"> -->
-              <?php //echo $project_step['step_name']; ?>
-            <!-- </p> -->
+
             <p class="col s4">
               Deadline : <?php echo $project_step['step_deadline']; ?>
             </p>
@@ -40,4 +38,3 @@
       </form>
     </div>
   </div>
-<!-- </div> -->
