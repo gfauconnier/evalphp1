@@ -13,9 +13,12 @@ if (isset($_SESSION['user'], $_SESSION['user_id'])) {
     ?>
     <main>
       <h1>Mes projets</h1>
+        <div class="row">
+
       <?php
       require_once 'ownprojects.php';
       ?>
+      </div>
     </main>
     <?php
 

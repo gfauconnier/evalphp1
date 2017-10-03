@@ -1,16 +1,28 @@
-header {
-  background-color: grey;
-}
-
-h1, h2, h3, h4 {
+h2, h3, h4 {
   font-size: 1rem;
 }
 
-.ownprojectcard {
+.del_step {
+  margin: 5px 0;
+}
+
+li.stepli {
   border: 1px solid black;
 }
 
+ul.step {
+  border: 1px solid black;
+}
 
-li.step {
-  border: 1px solid red;
+ul.task {
+  border: 1px solid grey;
+}
+
+ul.task li {
+  padding: 2px;
+}
+
+div.taskman {
+  height: 10%;
+  border: 1px solid grey;
 }

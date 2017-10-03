@@ -75,11 +75,13 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
             } ?>
         <li>
           <form action="" method="post">
-            <label for="newtask">Nouvelle tache</label>
-            <input type="text" id="newtask" name="newtask" placeholder="Taches">
+            <div class="input-field col s12">
+              <label for="newtask">Nouvelle tache</label>
+              <input type="text" id="newtask" name="newtask" required>
+            </div>
             <input type="hidden" name="stepid" value="<?php echo $project_step['id_step']; ?>">
             <input type="hidden" name="formaction" value="3">
-            <input type="submit" value="Créér">
+            <input type="submit" value="Créér" class="btn">
           </form>
         </li>
         <?php
@@ -91,12 +93,16 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
 
           <li>
             <form action="" method="post">
-              <label for="newstep">Nouvelle étape : </label>
-              <input type="text" id="newstep" name="newstep" placeholder="Etape">
-              <label for="newstepdate">Deadline : </label>
-              <input type="text" id="newstepdate" name="newstepdate" placeholder="jj/mm/aaaa">
+              <div class="input-field col s12">
+                <label for="newstep">Nouvelle étape : </label>
+                <input type="text" id="newstep" name="newstep">
+              </div>
+              <div class="input-field col s12">
+                <label for="newstepdate">Deadline : </label>
+                <input type="text" id="newstepdate" name="newstepdate" placeholder="jj/mm/aaaa">
+              </div>
               <input type="hidden" name="formaction" value="1">
-              <input type="submit" value="Créér">
+              <input type="submit" value="Créér" class="btn">
             </form>
           </li>
         </ul>
