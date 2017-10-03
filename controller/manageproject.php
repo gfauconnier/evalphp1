@@ -1,6 +1,7 @@
 <?php
 require_once '../model/data.php';
 
+// checks if the project (GET) is owned by the current user
 if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($_GET['project'])) {
     $projectid = sanitize_var($_GET['project']);
 
@@ -8,10 +9,11 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
         require_once '../vue/template/head.php';
         require_once 'headerc.php';
 
+// depending on the submitted form does a different action
         if (isset($_POST['formaction'])) {
             $formaction = sanitize_var($_POST['formaction']);
             switch ($formaction) {
-            case 1:
+            case 1:// add a new step
             if (isset($_POST['newstep'], $_POST['newstepdate'])) {
                 $addstep[] = $_POST['newstep'];
                 $addstep[] = $_POST['newstepdate'];
@@ -24,7 +26,7 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
             }
               break;
 
-            case 2:
+            case 2:// removes the step
             if (isset($_POST['stepid'])) {
                 $stepid = sanitize_var($_POST['stepid']);
 
@@ -34,7 +36,7 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
             }
               break;
 
-            case 3:
+            case 3://adds a new task
             if (isset($_POST['stepid'], $_POST['newtask'])) {
                 $newtask[] = $_POST['stepid'];
                 $newtask[] = $_POST['newtask'];
@@ -46,7 +48,7 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
             }
               break;
 
-            case 4:
+            case 4:// removes task
             if (isset($_POST['taskid'])) {
                 $taskid = sanitize_var($_POST['taskid']);
 
@@ -56,11 +58,11 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
             }
               break;
 
-            case 5:
+            case 5:// change state of the project to archived
               state_change('projects', 'id_project', $projectid, 3);
               break;
 
-            case 6:
+            case 6:// changes the state of the project to active
               state_change('projects', 'id_project', $projectid, 1);
               break;
 
@@ -75,7 +77,7 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
         include '../vue/manageprojectvue.php';
 
         $project_steps = select_step_task('project_steps', 'id_project', $projectid);
-
+// display of the project/steps/tasks
         foreach ($project_steps as $project_step) {
             include '../vue/manageprojectvue_step.php';
             $step_tasks = select_step_task('step_tasks', 'id_step', $project_step['id_step']);
