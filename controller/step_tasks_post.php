@@ -1,8 +1,6 @@
 <?php
 require '../model/data.php';
-// echo "<pre>";
-// var_dump($_POST);
-// echo "</pre>";
+
 if (isset($_POST['projectid'])) {
     $projectid = sanitize_var($_POST['projectid']);
     if (ownedproject($projectid)) {

@@ -1,5 +1,6 @@
 <?php
 
+// adds a new project to db
 function add_project($new_project)
 {
     $dbconnect = dbconnect();

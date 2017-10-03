@@ -1,5 +1,6 @@
 <?php
 
+// verifies if the user exists in the db
 function verify_user($user_name)
 {
     $dbconnect = dbconnect();
@@ -15,6 +16,7 @@ function verify_user($user_name)
     }
 }
 
+// adds a new user to the db
 function add_user($user_creation)
 {
     $dbconnect = dbconnect();

@@ -1,5 +1,6 @@
 <?php
 
+// selects the projects owned by the cOnnected user
 function get_own_projects($project = NULL) {
   $dbconnect = dbconnect();
   $selectquery = 'SELECT * FROM projects AS p INNER JOIN project_types AS pt ON p.id_project_type = pt.id_project_type WHERE id_user = '.$_SESSION['user_id'];
@@ -11,6 +12,7 @@ function get_own_projects($project = NULL) {
   return $res;
 }
 
+// gets all project_type s or the project_type of the sent parameter
 function get_project_types ($id = NULL) {
   $dbconnect = dbconnect();
   $id_val = $id ? ' WHERE id_project_type = '.$id : NULL;
@@ -19,6 +21,7 @@ function get_project_types ($id = NULL) {
   return $res;
 }
 
+// generic select function (needs a rename)
 function select_step_task($table, $id, $idvalue) {
   $dbconnect = dbconnect();
 
@@ -29,6 +32,7 @@ function select_step_task($table, $id, $idvalue) {
 
 }
 
+// used in index.php to display projects depending on select value
 function display_projects($val = 0) {
 
   $dbconnect = dbconnect();

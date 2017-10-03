@@ -1,5 +1,6 @@
 <?php
 
+// returns a line if the user exists
 function userconnect($username)
 {
     $dbconnect = dbconnect();
@@ -9,6 +10,7 @@ function userconnect($username)
     return $res;
 }
 
+// destroys the session
 function userdisconnect() {
   session_destroy();
 }

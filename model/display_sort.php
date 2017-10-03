@@ -1,5 +1,6 @@
 <?php
 
+// returns text to be displayed depending on selected sort item
 function display_sort_text($param = 0) {
   switch($param) {
     case 0:
@@ -16,6 +17,7 @@ function display_sort_text($param = 0) {
   return $text;
 }
 
+// returns a class if the state of the task is 1
 function is_checked_display($id_task) {
   $dbconnect = dbconnect();
 

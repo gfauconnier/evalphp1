@@ -57,11 +57,11 @@ if (isset($_SESSION['user'], $_SESSION['user_id'], $_GET['project']) && !empty($
               break;
 
             case 5:
-              archive_project($projectid, 3);
+              state_change('projects', 'id_project', $projectid, 3);
               break;
 
             case 6:
-              archive_project($projectid, 1);
+              state_change('projects', 'id_project', $projectid, 1);
               break;
 
             default:

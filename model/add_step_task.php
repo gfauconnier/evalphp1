@@ -1,4 +1,5 @@
 <?php
+// adds a new step to db
 function addstep($addstep, $projectid)
 {
     $dbconnect = dbconnect();
@@ -21,6 +22,7 @@ function addstep($addstep, $projectid)
     }
 }
 
+// adds a new task to db
 function addtask($addtask){
   $dbconnect = dbconnect();
   try {
@@ -40,6 +42,7 @@ function addtask($addtask){
   }
 }
 
+// deletes a task or a step
 function delete_step_task($table, $id, $id_value) {
   $dbconnect = dbconnect();
   try {
@@ -55,11 +58,4 @@ function delete_step_task($table, $id, $id_value) {
 
       $errors = $e->getMessage();
   }
-}
-
-function archive_project($id_project, $state_value){
-  $dbconnect = dbconnect();
-
-  $res = dbconnect()->query('UPDATE projects SET project_state = '.$state_value.' WHERE id_project = '.$id_project);
-  
 }
