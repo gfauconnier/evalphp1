@@ -56,3 +56,10 @@ function delete_step_task($table, $id, $id_value) {
       $errors = $e->getMessage();
   }
 }
+
+function archive_project($id_project, $state_value){
+  $dbconnect = dbconnect();
+
+  $res = dbconnect()->query('UPDATE projects SET project_state = '.$state_value.' WHERE id_project = '.$id_project);
+  
+}
