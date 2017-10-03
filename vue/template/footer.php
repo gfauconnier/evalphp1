@@ -6,6 +6,7 @@
   <script src="../js/main.js"></script>
 <!-- ############## JS sources ############## -->
 
+<!-- needed for materialize select -->
 <script type="text/javascript">
 $(document).ready(function() {
   $('select').material_select();

@@ -1,7 +1,5 @@
 <header class="red">
 
-  <!-- <img src="" alt="Logo"> -->
-
     <div class="row">
       <div class="row s6">
 
@@ -14,5 +12,5 @@
         </form>
 
     </div>
-  <!-- </div> -->
+
 </header>

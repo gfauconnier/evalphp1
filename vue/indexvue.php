@@ -17,6 +17,7 @@
   <div class="row">
     <h1 class="col s12"><?php echo $display_text; ?></h1>
     <?php
+    // displays all projects > steps > tasks in cards
     foreach ($display_projects as $display_project) { ?>
       <div class="col s12 m6 l4">
         <div class="card">
