@@ -1,4 +1,6 @@
 <?php
+
+// if the session exists (or not) displays a different header
 if (isset($_SESSION['user'], $_SESSION['user_id'])) {
     $header_links = '<a href="admin.php" class="btn">Gestion des projets</a>';
     $header_connect = '<form action="disconnect.php" method="post" class="row s6">';

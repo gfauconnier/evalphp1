@@ -5,6 +5,7 @@ require 'headerc.php';
 
 $errors = [];
 
+// if the inscription form is sent checks every entries with regex s and cleans them
 if (isset($_POST['user'], $_POST['userfname'], $_POST['userlname'], $_POST['email'], $_POST['pwd'], $_POST['rpwd'])
   && !empty($_POST['user']) && !empty($_POST['userfname']) && !empty($_POST['userlname']) && !empty($_POST['email'])
   && !empty($_POST['pwd']) && !empty($_POST['rpwd'])) {
@@ -36,6 +37,8 @@ if (isset($_POST['user'], $_POST['userfname'], $_POST['userlname'], $_POST['emai
         }
     }
 }
+
+// if there were errors, displays them
 if (count($errors)) {
     foreach ($errors as $error) {
       ?>
